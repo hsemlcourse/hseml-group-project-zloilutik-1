@@ -28,11 +28,11 @@
 
 Датасеты были самостоятельно собраны, очищены и приведены к единому формату для использования в симуляционной модели
 
-https://www.kaggle.com/datasets/zlata0slepts/heroes-of-might-and-magic-3-heroes
-https://www.kaggle.com/datasets/zlata0slepts/heroes-of-might-and-magic-3-spells
-https://www.kaggle.com/datasets/zlata0slepts/heroes-of-might-and-magic-3-skills/data
-https://www.kaggle.com/datasets/zlata0slepts/heroes-of-might-and-magic-3-war-machines/data
-https://www.kaggle.com/datasets/zlata0slepts/heroes-of-might-and-magic-3-units/data
+1. https://www.kaggle.com/datasets/zlata0slepts/heroes-of-might-and-magic-3-heroes
+2. https://www.kaggle.com/datasets/zlata0slepts/heroes-of-might-and-magic-3-spells
+3. https://www.kaggle.com/datasets/zlata0slepts/heroes-of-might-and-magic-3-skills/data
+4. https://www.kaggle.com/datasets/zlata0slepts/heroes-of-might-and-magic-3-war-machines/data
+5. https://www.kaggle.com/datasets/zlata0slepts/heroes-of-might-and-magic-3-units/data
 
 **Целевая метрика:** Accuracy, F1-score
 
