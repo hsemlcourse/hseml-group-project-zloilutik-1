@@ -16,7 +16,8 @@ class Unit:
     hp: int
     count: int
 
-    is_alive: bool = True
-
     def total_hp(self):
         return self.hp * self.count
+
+    def is_alive(self) -> bool:
+        return self.count > 0
