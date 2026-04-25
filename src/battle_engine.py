@@ -1,10 +1,10 @@
 import random
 from dataclasses import dataclass
-from typing import List, Optional
+from typing import List
 
 
 # =========================
-# UNIT MODEL
+# UNIT / ARMY
 # =========================
 
 @dataclass
@@ -14,77 +14,171 @@ class Unit:
     speed: int
     attack: int
     defense: int
+    min_damage: int
+    max_damage: int
     hp: int
+
     count: int
     is_alive: bool = True
 
+    def total_hp(self):
+        return self.hp * self.count
 
-    def power(self):
-        return self.attack * self.count
-
-
-# =========================
-# HERO ARMY
-# =========================
 
 @dataclass
 class Army:
     units: List[Unit]
 
     def alive_units(self):
-        return [u for u in self.units if u.is_alive and u.count > 0]
+        return [u for u in self.units if u.count > 0]
 
     def is_defeated(self):
         return len(self.alive_units()) == 0
 
 
 # =========================
-# BATTLE FIELD
+# FIELD 
 # =========================
 
 class BattleField:
-    def __init__(self, width=5, height=7):
-        self.width = width
-        self.height = height
+
+    def __init__(self):
+        self.h = 11
+        self.w = 15
+
+    def get_positions(self, n: int, side: str):
+    
+        positions = []
+
+        step = self.h // (n + 1)
+
+        for i in range(n):
+            y = (i + 1) * step
+
+            if side == "A":
+                x = 2
+            else:
+                x = self.w - 3
+
+            positions.append((x, y))
+
+        return positions
 
 
 # =========================
-# INITIATIVE SYSTEM
+# UTILS
 # =========================
 
-def get_turn_order(all_units: List[Unit]) -> List[Unit]:
-    """
-    Units act based on speed (higher goes first)
-    """
-    return sorted(all_units, key=lambda u: u.speed, reverse=True)
+def clamp(x, a, b):
+    return max(a, min(b, x))
+
+
+def get_base_damage(unit: Unit):
+    return random.randint(unit.min_damage, unit.max_damage)
+
+
+# =========================
+# DAMAGE MODEL
+# =========================
+
+def calc_i1(att_unit, att_hero, def_unit, def_hero):
+    diff = (att_unit.attack + att_hero) - (def_unit.defense + def_hero)
+
+    if diff < 3:
+        return 0.0
+
+    return 0.05 * diff
+
+
+def calc_i2():
+    return 0.0   
+
+
+def calc_i3(i2):
+    return 0.05 * i2
+
+
+def calc_r1(att_unit, att_hero, def_unit, def_hero):
+    diff = (def_unit.defense + def_hero) - (att_unit.attack + att_hero)
+    return max(0, 0.025 * diff)
+
+
+def calc_r2():
+    return 0.0
+
+
+def calc_r3():
+    return 0.0
+
+
+def calc_r4():
+    return 0.0
+
+
+def apply_luck():
+    return 1.5 if random.random() < 0.1 else 1.0
+
+
+def apply_damage(attacker, defender, att_hero=0, def_hero=0):
+    base = get_base_damage(attacker)
+
+    i1 = calc_i1(attacker, att_hero, defender, def_hero)
+    i2 = calc_i2()
+    i3 = calc_i3(i2)
+
+    r1 = calc_r1(attacker, att_hero, defender, def_hero)
+    r2 = calc_r2()
+    r3 = calc_r3()
+    r4 = calc_r4()
+
+    luck = apply_luck()
+
+    modifier = (1 + i1 + i2 + i3) * luck * (1 - r1 - r2 - r3 - r4)
+    modifier = clamp(modifier, 0.1, 3.0)
+
+    return int(base * modifier)
+
+
+# =========================
+# CORE DAMAGE APPLICATION
+# =========================
+
+def deal_damage(attacker: Unit, defender: Unit):
+    damage = apply_damage(attacker, defender)
+
+    while damage > 0 and defender.count > 0:
+
+        if damage >= defender.hp:
+            damage -= defender.hp
+            defender.count -= 1
+
+        else:
+            defender.hp -= damage
+            damage = 0
+
+    if defender.count <= 0:
+        defender.count = 0
 
 
 # =========================
 # MORAL SYSTEM
 # =========================
 
-def calculate_morale(army: Army) -> int:
+def calculate_morale(army: Army):
     factions = set(u.faction for u in army.units)
 
-    # undead ignore morale
+    # undead rule
     if all(u.faction == "Necropolis" for u in army.units):
         return 0
 
-    if len(factions) == 1:
-        return 1  # good morale
+    # mixed armies = bad morale
+    if len(factions) > 1:
+        return -1
 
-    if len(factions) == 2:
-        return 0  # neutral
-
-    return -1  # bad morale (chaotic army)
+    return 1
 
 
-def morale_trigger(morale: int) -> bool:
-    """
-    Simple chance system:
-    - good morale -> extra turn chance
-    - bad morale -> skip turn chance
-    """
+def morale_trigger(morale):
     if morale > 0:
         return random.random() < 0.2
     if morale < 0:
@@ -93,40 +187,11 @@ def morale_trigger(morale: int) -> bool:
 
 
 # =========================
-# LUCK SYSTEM
+# INITIATIVE
 # =========================
 
-def apply_luck() -> float:
-    """
-    Luck modifies damage multiplier
-    """
-    roll = random.random()
-
-    if roll < 0.1:
-        return 1.5  # lucky hit
-    elif roll > 0.9:
-        return 0.5  # unlucky hit
-    return 1.0
-
-
-# =========================
-# DAMAGE
-# =========================
-
-def deal_damage(attacker: Unit, defender: Unit):
-    base_damage = attacker.attack * attacker.count
-    mitigation = defender.defense * 0.5
-
-    damage = max(1, base_damage - mitigation)
-    damage *= apply_luck()
-
-    kill = int(damage / defender.hp)
-
-    defender.count -= kill
-
-    if defender.count <= 0:
-        defender.is_alive = False
-        defender.count = 0
+def get_turn_order(units):
+    return sorted(units, key=lambda u: u.speed, reverse=True)
 
 
 # =========================
@@ -135,20 +200,20 @@ def deal_damage(attacker: Unit, defender: Unit):
 
 class BattleEngine:
     def __init__(self, army_a: Army, army_b: Army):
-        self.army_a = army_a
-        self.army_b = army_b
+        self.a = army_a
+        self.b = army_b
 
-    def get_all_units(self):
-        return self.army_a.alive_units() + self.army_b.alive_units()
+    def all_units(self):
+        return self.a.alive_units() + self.b.alive_units()
 
     def step(self):
-        order = get_turn_order(self.get_all_units())
 
-        for unit in order:
-            if not unit.is_alive:
+        for unit in get_turn_order(self.all_units()):
+
+            if unit.count <= 0:
                 continue
 
-            enemy_army = self.army_b if unit in self.army_a.units else self.army_a
+            enemy_army = self.b if unit in self.a.units else self.a
             enemies = enemy_army.alive_units()
 
             if not enemies:
@@ -158,22 +223,19 @@ class BattleEngine:
 
             deal_damage(unit, target)
 
-            # morale extra turn
-            morale = calculate_morale(
-                self.army_a if unit in self.army_a.units else self.army_b
-            )
+            morale = calculate_morale(self.a if unit in self.a.units else self.b)
 
             if morale_trigger(morale):
                 deal_damage(unit, target)
 
     def battle(self):
-        round_num = 0
+        rounds = 0
 
-        while not self.army_a.is_defeated() and not self.army_b.is_defeated():
+        while not self.a.is_defeated() and not self.b.is_defeated():
             self.step()
-            round_num += 1
+            rounds += 1
 
         return {
-            "winner": "A" if not self.army_a.is_defeated() else "B",
-            "rounds": round_num
+            "winner": "A" if not self.a.is_defeated() else "B",
+            "rounds": rounds
         }
