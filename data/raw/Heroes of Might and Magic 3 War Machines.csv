@@ -1,0 +1,4 @@
+﻿Name;Category;Affects;Target_Scope;Base_Min;Base_Max;Scaling_Type;Scaling_Source;Can_Control;Base_Shots;Special_Effect;Formula;Apply_Phase;Notes
+Ballista;war_machine;unit;enemy;2;3;linear;Hero_Attack;0;1;double_damage_chance;Damage = Random(Base_Min, Base_Max) * (Hero_Attack + 1);Damage_Calc;Acts automatically without Artillery
+First Aid Tent;war_machine;unit;ally;50;50;none;None;0;1;heal_single_target;Heal = min(Base_Max, Missing_HP);Post_Action;"Heals one unit; cannot resurrect"
+Ammo Cart;war_machine;unit;ally;0;0;none;None;0;0;unlimited_ammo;None;Passive;Provides infinite shots to ranged units

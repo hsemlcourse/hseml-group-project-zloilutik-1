@@ -1,0 +1,46 @@
+﻿Skill;Level;Category;Affects;Target_Scope;Bonus_Type;Bonus_Subtype;Value;Condition;Damage_Stage;Damage_Source;Formula;Apply_Phase;Stacking_Type;Priority;Max_Limit
+Archery;Basic;combat;unit;enemy;Damage_Modifier;ranged_damage;0.1;Attack_Type == Ranged;outgoing;physical;Outgoing_Damage = Outgoing_Damage * (1 + Value);Damage_Calc;additive;1;
+Archery;Advanced;combat;unit;enemy;Damage_Modifier;ranged_damage;0.25;Attack_Type == Ranged;outgoing;physical;Outgoing_Damage = Outgoing_Damage * (1 + Value);Damage_Calc;additive;1;
+Archery;Expert;combat;unit;enemy;Damage_Modifier;ranged_damage;0.5;Attack_Type == Ranged;outgoing;physical;Outgoing_Damage = Outgoing_Damage * (1 + Value);Damage_Calc;additive;1;
+Armorer;Basic;combat;unit;self;Damage_Reduction;all_damage;0.05;;incoming;any;Incoming_Damage = Incoming_Damage * (1 - Value);Damage_Calc;multiplicative;2;
+Armorer;Advanced;combat;unit;self;Damage_Reduction;all_damage;0.1;;incoming;any;Incoming_Damage = Incoming_Damage * (1 - Value);Damage_Calc;multiplicative;2;
+Armorer;Expert;combat;unit;self;Damage_Reduction;all_damage;0.15;;incoming;any;Incoming_Damage = Incoming_Damage * (1 - Value);Damage_Calc;multiplicative;2;
+Offense;Basic;combat;unit;enemy;Damage_Modifier;melee_damage;0.1;Attack_Type == Melee;outgoing;physical;Outgoing_Damage = Outgoing_Damage * (1 + Value);Damage_Calc;additive;1;
+Offense;Advanced;combat;unit;enemy;Damage_Modifier;melee_damage;0.2;Attack_Type == Melee;outgoing;physical;Outgoing_Damage = Outgoing_Damage * (1 + Value);Damage_Calc;additive;1;
+Offense;Expert;combat;unit;enemy;Damage_Modifier;melee_damage;0.3;Attack_Type == Melee;outgoing;physical;Outgoing_Damage = Outgoing_Damage * (1 + Value);Damage_Calc;additive;1;
+Resistance;Basic;combat;unit;self;Chance_Modifier;magic_resist;0.05;;incoming;magical;Resist_Chance = min(1, Resist_Chance + Value);Pre_Cast;additive;0;1
+Resistance;Advanced;combat;unit;self;Chance_Modifier;magic_resist;0.1;;incoming;magical;Resist_Chance = min(1, Resist_Chance + Value);Pre_Cast;additive;0;1
+Resistance;Expert;combat;unit;self;Chance_Modifier;magic_resist;0.2;;incoming;magical;Resist_Chance = min(1, Resist_Chance + Value);Pre_Cast;additive;0;1
+Sorcery;Basic;magic;spell;enemy;Damage_Modifier;spell_damage;0.05;Spell_Type == Damage;outgoing;magical;Outgoing_Damage = Outgoing_Damage * (1 + Value);Damage_Calc;additive;1;
+Sorcery;Advanced;magic;spell;enemy;Damage_Modifier;spell_damage;0.1;Spell_Type == Damage;outgoing;magical;Outgoing_Damage = Outgoing_Damage * (1 + Value);Damage_Calc;additive;1;
+Sorcery;Expert;magic;spell;enemy;Damage_Modifier;spell_damage;0.15;Spell_Type == Damage;outgoing;magical;Outgoing_Damage = Outgoing_Damage * (1 + Value);Damage_Calc;additive;1;
+Intelligence;Basic;magic;hero;self;Stat_Modifier;mana;0.25;;stat;none;Max_Mana = Base_Mana * (1 + Value);Battle_Start;additive;0;
+Intelligence;Advanced;magic;hero;self;Stat_Modifier;mana;0.5;;stat;none;Max_Mana = Base_Mana * (1 + Value);Battle_Start;additive;0;
+Intelligence;Expert;magic;hero;self;Stat_Modifier;mana;1.0;;stat;none;Max_Mana = Base_Mana * (1 + Value);Battle_Start;additive;0;
+Leadership;Basic;combat;unit;self;Stat_Modifier;morale;1;;stat;none;Morale = min(3, Morale + Value);Pre_Turn;additive;0;3
+Leadership;Advanced;combat;unit;self;Stat_Modifier;morale;2;;stat;none;Morale = min(3, Morale + Value);Pre_Turn;additive;0;3
+Leadership;Expert;combat;unit;self;Stat_Modifier;morale;3;;stat;none;Morale = min(3, Morale + Value);Pre_Turn;additive;0;3
+Luck;Basic;combat;unit;self;Stat_Modifier;luck;1;;stat;none;Luck = min(3, Luck + Value);Pre_Turn;additive;0;3
+Luck;Advanced;combat;unit;self;Stat_Modifier;luck;2;;stat;none;Luck = min(3, Luck + Value);Pre_Turn;additive;0;3
+Luck;Expert;combat;unit;self;Stat_Modifier;luck;3;;stat;none;Luck = min(3, Luck + Value);Pre_Turn;additive;0;3
+Tactics;Basic;combat;battle;global;Utility;placement;3;;system;none;Deployment_Range = Value;Before_Battle_Start;override;0;
+Tactics;Advanced;combat;battle;global;Utility;placement;5;;system;none;Deployment_Range = Value;Before_Battle_Start;override;0;
+Tactics;Expert;combat;battle;global;Utility;placement;7;;system;none;Deployment_Range = Value;Before_Battle_Start;override;0;
+Air Magic;Basic;magic;spell;self;Spell_Master_Level;air;1;;magical;none;Effective_Spell_Level = max(Effective_Spell_Level, Value);Pre_Cast;override;0;
+Air Magic;Advanced;magic;spell;self;Spell_Master_Level;air;2;;magical;none;Effective_Spell_Level = max(Effective_Spell_Level, Value);Pre_Cast;override;0;
+Air Magic;Expert;magic;spell;self;Spell_Master_Level;air;3;;magical;none;Effective_Spell_Level = max(Effective_Spell_Level, Value);Pre_Cast;override;0;
+Fire Magic;Basic;magic;spell;self;Spell_Master_Level;fire;1;;magical;none;Effective_Spell_Level = max(Effective_Spell_Level, Value);Pre_Cast;override;0;
+Fire Magic;Advanced;magic;spell;self;Spell_Master_Level;fire;2;;magical;none;Effective_Spell_Level = max(Effective_Spell_Level, Value);Pre_Cast;override;0;
+Fire Magic;Expert;magic;spell;self;Spell_Master_Level;fire;3;;magical;none;Effective_Spell_Level = max(Effective_Spell_Level, Value);Pre_Cast;override;0;
+Water Magic;Basic;magic;spell;self;Spell_Master_Level;water;1;;magical;none;Effective_Spell_Level = max(Effective_Spell_Level, Value);Pre_Cast;override;0;
+Water Magic;Advanced;magic;spell;self;Spell_Master_Level;water;2;;magical;none;Effective_Spell_Level = max(Effective_Spell_Level, Value);Pre_Cast;override;0;
+Water Magic;Expert;magic;spell;self;Spell_Master_Level;water;3;;magical;none;Effective_Spell_Level = max(Effective_Spell_Level, Value);Pre_Cast;override;0;
+Earth Magic;Basic;magic;spell;self;Spell_Master_Level;earth;1;;magical;none;Effective_Spell_Level = max(Effective_Spell_Level, Value);Pre_Cast;override;0;
+Earth Magic;Advanced;magic;spell;self;Spell_Master_Level;earth;2;;magical;none;Effective_Spell_Level = max(Effective_Spell_Level, Value);Pre_Cast;override;0;
+Earth Magic;Expert;magic;spell;self;Spell_Master_Level;earth;3;;magical;none;Effective_Spell_Level = max(Effective_Spell_Level, Value);Pre_Cast;override;0;
+Artillery;Basic;combat;war_machine;self;Control_Modifier;ballista;1;Unit_Type == Ballista;none;system;"Control = 1; Double_Damage_Chance = 0.5";Pre_Attack;override;0;
+Artillery;Advanced;combat;war_machine;self;Control_Modifier;ballista;2;Unit_Type == Ballista;none;system;"Control = 1; Shots = 2; Double_Damage_Chance = 0.75";Pre_Attack;override;0;
+Artillery;Expert;combat;war_machine;self;Control_Modifier;ballista;3;Unit_Type == Ballista;none;system;"Control = 1; Shots = 2; Double_Damage_Chance = 1.0";Pre_Attack;override;0;
+First Aid;Basic;combat;war_machine;self;Heal_Modifier;first_aid;50;Unit_Type == First_Aid_Tent;none;healing;"Control = 1; Heal_Cap = Value";Post_Action;override;0;
+First Aid;Advanced;combat;war_machine;self;Heal_Modifier;first_aid;75;Unit_Type == First_Aid_Tent;none;healing;"Control = 1; Heal_Cap = Value";Post_Action;override;0;
+First Aid;Expert;combat;war_machine;self;Heal_Modifier;first_aid;100;Unit_Type == First_Aid_Tent;none;healing;"Control = 1; Heal_Cap = Value";Post_Action;override;0;

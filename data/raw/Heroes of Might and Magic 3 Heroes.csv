@@ -1,0 +1,156 @@
+﻿Name;Faction;Race;Sex;Rank;Specialization;Attack_Skill;Defence_Skill;Power_Skill;Knowledge_Skill;Skill_1_Name;Skill_1_Level;Skill_2_Name;Skill_2_Level;Spellbook;Starting_Spell
+Adelaide;Castle;Human;Female;Cleric;Frost ring;1;0;2;2;Wisdom;Advanced;Diplomacy;Basic;1;Frost Ring
+Adela;Castle;Human;Female;Cleric;Bless;1;0;2;2;Wisdom;Basic;Diplomacy;Basic;1;Bless
+Valeska;Castle;Human;Female;Knight;Archers;2;2;1;1;Archery;Basic;Leadership;Basic;0;
+Ingham;Castle;Human;Male;Cleric;Monks;1;0;2;2;Wisdom;Basic;Mysticism;Basic;1;Curse
+Cuthbert;Castle;Human;Male;Cleric;Weakness;1;0;2;2;Wisdom;Basic;Estates;Basic;1;Weakness
+Catherine;Castle;Human;Female;Knight;Swordsmen;2;2;1;1;Leadership;Basic;Offense;Basic;0;
+Caitline;Castle;Human;Female;Cleric;Gold;1;0;2;2;Wisdom;Basic;Intelligence;Basic;1;Cure
+Christian;Castle;Human;Male;Knight;Ballista;2;2;1;1;Leadership;Basic;Artillery;Basic;0;
+Loynis;Castle;Human;Male;Cleric;Prayer;1;0;2;2;Wisdom;Basic;Learning;Basic;1;Prayer
+Lord Haart;Castle;Human;Male;Knight;Estates;2;2;1;1;Leadership;Basic;Estates;Basic;0;
+Orrin;Castle;Human;Male;Knight;Archery;2;2;1;1;Leadership;Basic;Archery;Basic;0;
+Rion;Castle;Human;Male;Cleric;First Aid;1;0;2;2;Wisdom;Basic;First Aid;Basic;1;Stone Skin
+Roland;Castle;Human;Male;Knight;Swordsmen;2;2;1;1;Leadership;Basic;Armorer;Basic;0;
+Sanya;Castle;Human;Female;Cleric;Eagle eye;1;0;2;2;Wisdom;Basic;Eagle Eye;Basic;1;Dispell
+Sylvia;Castle;Human;Female;Knight;Navigation;2;2;1;1;Navigation;Basic;Leadership;Basic;0;
+Sorsha;Castle;Human;Female;Knight;Swordsmen;2;2;1;1;Leadership;Basic;Offense;Basic;0;
+Sir Mullich;Castle;Human;Male;Knight;Speed;2;2;1;1;Leadership;Advanced;;;0;
+Tyris;Castle;Human;Female;Knight;Cavaliers;2;2;1;1;Leadership;Basic;Tactics;Basic;0;
+Edric;Castle;Human;Male;Knight;Griffins;2;2;1;1;Leadership;Basic;Armorer;Basic;0;
+Alagar;Rampart;Human;Male;Druid;Ice Bolt;0;2;2;1;Wisdom;Basic;Sorcery;Basic;1;Ice Bolt
+Aeris;Rampart;Elf;Male;Druid;Pegasuses;0;2;2;1;Wisdom;Basic;Scouting;Basic;1;Protection From Air
+Gelu;Rampart;Half vori-elf, half human;Male;Ranger;Sharpshooters;1;3;1;1;Archery;Basic;Leadership;Basic;0;
+Gem;Rampart;Human;Female;Druid;First Aid;0;2;2;1;First Aid;Basic;Wisdom;Basic;1;Summon Boat
+Jenova;Rampart;Elf;Female;Ranger;Gold;1;3;1;1;Archery;Advanced;;;0;
+Ivor;Rampart;Elf;Male;Ranger;Elfs;1;3;1;1;Archery;Basic;Offense;Basic;0;
+Kyrre;Rampart;Elf;Female;Ranger;Logistic;1;3;1;1;Logistics;Basic;Archery;Basic;0;
+Clansy;Rampart;Dwarf;Male;Ranger;Unicorns;1;3;1;1;Resistance;Basic;Pathfinding;Basic;0;
+Coronius;Rampart;Human;Male;Druid;Slayer;0;2;2;1;Wisdom;Basic;Scholar;Basic;1;Slayer
+Malcolm;Rampart;Dwarf;Male;Druid;Eagle eye;0;2;2;1;Wisdom;Basic;Eagle Eye;Basic;1;Magic Arrow
+Mephala;Rampart;Human;Female;Ranger;Armor;1;3;1;1;Leadership;Basic;Armorer;Basic;0;
+Melodia;Rampart;Elf;Female;Druid;Luck;0;2;2;1;Wisdom;Basic;Luck;Basic;1;Fortune
+Ryland;Rampart;Human;Male;Ranger;Dendroids;1;3;1;1;Leadership;Basic;Diplomacy;Basic;0;
+Thorgrim;Rampart;Dwarf;Male;Ranger;Resistance;1;3;1;1;Resistance;Advanced ;;;0;
+Uland;Rampart;Dwarf;Male;Druid;Cure;0;2;2;1;Wisdom;Basic;Ballistics;Basic;1;Cure
+Ufretin;Rampart;Dwarf;Male;Ranger;Dwarfs;1;3;1;1;Luck;Basic;Resistance;Basic;0;
+Elleshar;Rampart;Elf;Male;Druid;Intelligence;0;2;2;1;Wisdom;Basic;Intelligence;Basic;1;Curse
+Aine;Tower;Genie;Female;Wizard;Gold;0;0;3;2;Wisdom;Basic;Scholar;Basic;;Curse
+Astral;Tower;Human;Male;Wizard;Hypnotize;0;0;3;2;Wisdom;Advanced;;;;Hypnotize
+Daremyth;Tower;Genie;Female;Wizard;Luck;0;0;3;2;Wisdom;Basic;Intelligence;Basic;;Fortune
+Dracon;Tower;Human;Male;Wizard;Enchanters;0;0;3;2;Wisdom;Advanced;;;;Haste
+Josephine;Tower;Human;Female;Alchemist;Golems;1;1;2;2;Mysticism;Basic;Sorcery;Basic;;Haste
+Iona;Tower;Genie;Female;Alchemist;Genie;1;1;2;2;Scholar;Basic;Intelligence;Basic;;Magic Arrow
+Cyra;Tower;Human;Female;Wizard;Haste;0;0;3;2;Wisdom;Basic;Diplomacy;Basic;;Haste
+Neela;Tower;Genie;Female;Alchemist;Armor;1;1;2;2;Armorer;Basic;Scholar;Basic;;Shield
+Piquedram;Tower;Human;Male;Alchemist;Gargoyles;1;1;2;2;Mysticism;Basic;Scouting;Basic;;Shield
+Rissa;Tower;Human;Female;Alchemist;Mercury;1;1;2;2;Mysticism;Basic;Offense;Basic;;Magic Arrow
+Serena;Tower;Human;Female;Wizard;Eagle eye;0;0;3;2;Eagle Eye;Basic;Wisdom;Basic;;Dispell
+Solmyr;Tower;Genie;Male;Wizard;Chain Lightning;0;0;3;2;Wisdom;Basic;Sorcery;Basic;;Chain Lightning
+Thane;Tower;Genie;Male;Alchemist;Genie;1;1;2;2;Scholar;Advanced;;;;Magic Arrow
+Theodorus;Tower;Human;Male;Wizard;Mages;0;0;3;2;Wisdom;Basic;Ballistics;Basic;;Shield
+Torosar;Tower;Human;Male;Alchemist;Ballista;1;1;2;2;Armorer;Basic;Tactics;Basic;;Magic Arrow
+Fafner;Tower;Genie;Male;Alchemist;Nagas;1;1;2;2;Scholar;Basic;Resistance;Basic;;Haste
+Halon;Tower;Genie;Male;Wizard;Mysticism;0;0;3;2;Wisdom;Basic;Mysticism;Basic;;Stone Skin
+Ayden;Inferno;Human;Male;Heretic;Intelligence;1;1;1;2;Wisdom;Basic;Intelligence;Basic;1;View Earth
+Axsis;Inferno;Demon;Male;Heretic;Mysticism;1;1;1;2;Wisdom;Basic;Mysticism;Basic;1;Protection From Air
+Ash;Inferno;Demon;Female;Heretic;Bloodlust;1;1;1;2;Wisdom;Basic;Eagle Eye;Basic;1;Bloodlust
+Zydar;Inferno;Efreet;Male;Heretic;Sorcery;1;1;1;2;Wisdom;Basic;Sorcery;Basic;1;Stone Skin
+Ignatius;Inferno;Human;Male;Demoniac;Imps;2;2;1;1;Tacticts;Basic;Resistance;Basic;0;
+Calid;Inferno;Demon;Female;Heretic;Sulfur;1;1;1;2;Wisdom;Basic;Learning;Basic;1;Haste
+Calh;Inferno;Demon;Male;Demoniac;Gogs;2;2;1;1;Archery;Basic;Scouting;Basic;0;
+Xarfax;Inferno;Human;Male;Heretic;Fireball;1;1;1;2;Wisdom;Basic;Leadership;Basic;1;Fireball
+Xeron;Inferno;Devil;Male;Demoniac;Devils;2;2;1;1;Leadership;Basic;Tactics;Basic;0;
+Xyron;Inferno;Efreet;Male;Heretic;Inferno;1;1;1;2;Wisdom;Basic;Scholar;Basic;1;Blind
+Marius;Inferno;Demon;Female;Demoniac;Demons;2;2;1;1;Armorer;Advanced ;;;0;
+Nymus;Inferno;Demon;Female;Demoniac;Pit fiends;2;2;1;1;Offense;Advanced ;;;0;
+Octavia;Inferno;Efreet;Female;Demoniac;Gold;2;2;1;1;Scholar;Basic;Offense;Basic;0;
+Olema;Inferno;Human;Female;Heretic;Weakness;1;1;1;2;Wisdom;Basic;Ballistics;Basic;1;Weakness
+Pyre;Inferno;Human;Female;Demoniac;Ballista;2;2;1;1;Logistics;Basic;Artillery;Basic;0;
+Rashka;Inferno;Efreet;Male;Demoniac;Efreets;2;2;1;1;Wisdom;Basic;Scholar;Basic;0;
+Fiona;Inferno;Human;Female;Demoniac;Hell Hounds;2;2;1;1;Scouting;Advanced ;;;0;
+Vidomina;Necropolis;Human;Female;Necromancer;Necromancy;1;0;2;2;Necromancy;Advanced ;;;1;Curse
+Vokial;Necropolis;Vampire;Male;Death knight;Vampires;1;2;1;2;Necromancy;Basic;Artillery;Basic;1;Stone Skin
+Galthran;Necropolis;Vampire;Male;Death knight;Skeletons;1;2;1;2;Necromancy;Basic;Armorer;Basic;1;Shield
+Isra;Necropolis;Lich;Female;Death knight;Necromancy;1;2;1;2;Necromancy;Advanced ;;;1;Magic Arrow
+Clavius;Necropolis;Human;Male;Death knight;Gold;1;2;1;2;Necromancy;Basic;Offense;Basic;1;Magic Arrow
+Xsi;Necropolis;Lich;Female;Necromancer;Stone Skin;1;0;2;2;Necromancy;Basic;Learning;Basic;1;Stone Skin
+Moandor;Necropolis;Lich;Male;Death knight;Liches;1;2;1;2;Necromancy;Basic;Learning;Basic;1;Slow
+Nagash;Necropolis;Lich;Male;Necromancer;Gold;1;0;2;2;Necromancy;Basic;Intelligence;Basic;1;Protection From Air
+Nimbus;Necropolis;Human;Male;Necromancer;Eagle eye;1;0;2;2;Necromancy;Basic;Eagle Eye;Basic;1;Shield
+Sandro;Necropolis;Lich;Male;Necromancer;Sorcery;1;0;2;2;Necromancy;Basic;Sorcery;Basic;1;Slow
+Septienna;Necropolis;Human;Female;Necromancer;Death ripple;1;0;2;2;Necromancy;Basic;Scholar;Basic;1;Death Ripple
+Straker;Necropolis;Human;Male;Death knight;Walking deads;1;2;1;2;Necromancy;Basic;Resistance;Basic;1;Haste
+Tamika;Necropolis;Vampire;Female;Death knight;Black knights;1;2;1;2;Necromancy;Basic;Offense;Basic;1;Magic Arrow
+Thant;Necropolis;Vampire;Male;Necromancer;Animate dead;1;0;2;2;Necromancy;Basic;Mysticism;Basic;1;Animate Dead
+Charna;Necropolis;Human;Female;Death knight;Wights;1;2;1;2;Necromancy;Basic;Tactics;Basic;1;Magic Arrow
+Aislin;Necropolis;Vampire;Female;Necromancer;Meteor shower;1;0;2;2;Necromancy;Basic;Wisdom;Basic;1;Mereor Shower
+Ajit;Dungeon;Human;Male;Overlord;Beholders;2;2;1;1;Leadership;Basic;Resistance;Basic;0;
+Alamar;Dungeon;Human;Male;Warlock;Resurrection;0;0;2;3;Wisdom;Basic;Scholar;Basic;1;Resurrection
+Arlach;Dungeon;Troglodyte;Male;Overlord;Ballista;2;2;1;1;Offense;Basic;Artillery;Basic;0;
+Geon;Dungeon;Troglodyte;Male;Warlock;Eagle eye;0;0;2;3;Wisdom;Basic;Eagle Eye;Basic;1;Slow
+Gunnar;Dungeon;Minotaur;Male;Overlord;Logictic;2;2;1;1;Tacticts;Basic;Logistics;Basic;0;
+Damacon;Dungeon;Troglodyte;Male;Overlord;Gold;2;2;1;1;Offense;Advanced ;;;0;
+Darkstorm;Dungeon;Minotaur;Male;Warlock;Stone Skin;0;0;2;3;Wisdom;Basic;Learning;Basic;1;Stone Skin
+Dace;Dungeon;Minotaur;Male;Overlord;Minotaurs;2;2;1;1;Offense;Basic;Tactics;Basic;0;
+Jeddite;Dungeon;Human;Male;Warlock;Resurrection;0;0;2;3;Wisdom;Advanced;;;1;Resurrection
+Deemer;Dungeon;Minotaur;Male;Warlock;Meteor shower;0;0;2;3;Scouting;Basic;Wisdom;Basic;1;Mereor Shower
+Lorelei;Dungeon;Human;Female;Overlord;Harpies;2;2;1;1;Leadership;Basic;Scouting;Basic;0;
+Malekith;Dungeon;Minotaur;Male;Warlock;Sorcery;0;0;2;3;Wisdom;Basic;Sorcery;Basic;1;Bloodlust
+Multare;Dungeon;Human;Female;Overlord;Crystal Dragons;2;2;1;1;Tacticts;Basic;Estates;Basic;0;
+Multare Drake;Dungeon;Dragon;Female;Overlord;Crystal Dragons;2;2;1;1;Tacticts;Basic;Estates;Basic;0;
+Sephinroth;Dungeon;Human;Female;Warlock;Crystals;0;0;2;3;Wisdom;Basic;Intelligence;Basic;1;Protection From Air
+Synca;Dungeon;Human;Female;Overlord;Manticores;2;2;1;1;Leadership;Basic;Scholar;Basic;0;
+Shakti;Dungeon;Troglodyte;Male;Overlord;Troglodytes;2;2;1;1;Offense;Basic;Tactics;Basic;0;
+Jaegar;Dungeon;Troglodyte;Male;Warlock;Mysticism;0;0;2;3;Wisdom;Basic;Mysticism;Basic;1;Shield
+Boragus;Stronghold;Ogre;Male;Barbarian;Ogres;4;0;1;1;Offense;Basic;Tactics;Basic;0;
+Vey;Stronghold;Ogre;Male;Battle mage;Ogres;2;1;1;1;Wisdom;Basic;Leadership;Basic;1;Magic Arrow
+Gird;Stronghold;Human;Female;Battle mage;Sorcery;2;1;1;1;Wisdom;Basic;Sorcery;Basic;1;Bloodlust
+Gretchin;Stronghold;Ogre;Female;Barbarian;Goblins;4;0;1;1;Offense;Basic;Pathfinding;Basic;0;
+Gundula;Stronghold;Ogre;Female;Battle mage;Offense;2;1;1;1;Wisdom;Basic;Offense;Basic;1;Slow
+Gurnisson;Stronghold;Ogre;Male;Barbarian;Ballista;4;0;1;1;Offense;Basic;Artillery;Basic;0;
+Dessa;Stronghold;Ogre;Male;Battle mage;Logistic;2;1;1;1;Wisdom;Basic;Logistics;Basic;1;Stone Skin
+Jabarkas;Stronghold;Ogre;Male;Barbarian;Orcs;4;0;1;1;Offense;Basic;Archery;Basic;0;
+Zubin;Stronghold;Ogre;Male;Battle mage;Precision;2;1;1;1;Wisdom;Basic;Artillery;Basic;1;Precision
+Yog;Stronghold;Genie;Male;Barbarian;Cyclops;4;0;1;1;Offense;Basic;Ballistics;Basic;0;
+Kilgor;Stronghold;Human;Male;Barbarian;Behemoths;4;0;1;1;Offense;Advanced ;;;0;
+Krellion;Stronghold;Ogre;Male;Barbarian;Ogres;4;0;1;1;Offense;Basic;Resistance;Basic;0;
+Crag Hack;Stronghold;Human;Male;Barbarian;Offense;4;0;1;1;Offense;Advanced ;;;0;
+Oris;Stronghold;Human;Female;Battle mage;Eagle eye;2;1;1;1;Wisdom;Basic;Eagle Eye;Basic;1;Protection From Air
+Saurug;Stronghold;Ogre;Male;Battle mage;Jewel;2;1;1;1;Wisdom;Basic;Resistance;Basic;1;Bloodlust
+Terek;Stronghold;Human;Male;Battle mage;Haste;2;1;1;1;Wisdom;Basic;Tactics;Basic;1;Haste
+Tyraxor;Stronghold;Ogre;Male;Barbarian;Wolf riders;4;0;1;1;Offense;Basic;Tactics;Basic;0;
+Shiva;Stronghold;Human;Female;Barbarian;Rocs;4;0;1;1;Offense;Basic;Scouting;Basic;0;
+Adrienne;Fortress;Human;Female;Witch;Fire magic;0;1;2;2;Wisdom;Basic;Fire Magic;Expert;1;Blind
+Alkin;Fortress;Gnoll;Male;Beastmaster;Gorgons;0;4;1;1;Armorer;Basic;Offense;Basic;0;
+Andra;Fortress;Human;Female;Witch;Intelligence;0;1;2;2;Wisdom;Basic;Intelligence;Basic;1;Dispell
+Bron;Fortress;Lizardman;Male;Beastmaster;Basilisks;0;4;1;1;Armorer;Basic;Resistance;Basic;0;
+Broghild;Fortress;Lizardman;Male;Beastmaster;Wyverns;0;4;1;1;Armorer;Basic;Scouting;Basic;0;
+Verdish;Fortress;Human;Female;Witch;First Aid;0;1;2;2;Wisdom;Basic;First Aid;Basic;1;Protection From Fire
+Wystan;Fortress;Lizardman;Male;Beastmaster;Lizardmen;0;4;1;1;Armorer;Basic;Archery;Basic;0;
+Voy;Fortress;Lizardman;Female;Witch;Navigation;0;1;2;2;Wisdom;Basic;Navigation;Basic;1;Slow
+Gerwulf;Fortress;Human;Male;Beastmaster;Ballista;0;4;1;1;Armorer;Basic;Artillery;Basic;0;
+Drakon;Fortress;Gnoll;Male;Beastmaster;Gnolls;0;4;1;1;Armorer;Basic;Leadership;Basic;0;
+Korbac;Fortress;Lizardman;Male;Beastmaster;Serpent flies;0;4;1;1;Armorer;Basic;Pathfinding;Basic;0;
+Merist;Fortress;Gnoll;Female;Witch;Stone Skin;0;1;2;2;Wisdom;Basic;Learning;Basic;1;Stone Skin
+Mirlanda;Fortress;Human;Female;Witch;Weakness;0;1;2;2;Wisdom;Advanced;;;1;Weakness
+Rosic;Fortress;Gnoll;Female;Witch;Mysticism;0;1;2;2;Wisdom;Basic;Mysticism;Basic;1;Magic Arrow
+Styg;Fortress;Lizardman;Female;Witch;Sorcery;0;1;2;2;Wisdom;Basic;Sorcery;Basic;1;Shield
+Tazar;Fortress;Human;Male;Beastmaster;Armor;0;4;1;1;Armorer;Advanced;;;0;
+Tiva;Fortress;Gnoll;Female;Witch;Eagle eye;0;1;2;2;Wisdom;Basic;Eagle Eye;Basic;1;Stone Skin
+Aenain;Conflux;Genie;Male;Elementalist;Disrupting Ray;0;0;3;3;Wisdom;Basic;Air Magic;Basic;1;Disrupting Ray
+Brissa;Conflux;Genie;Female;Elementalist;Haste;0;0;3;3;Wisdom;Basic;Air Magic;Basic;1;Haste
+Grindad;Conflux;Dwarf;Male;Elementalist;Gold;0;0;3;3;Wisdom;Basic;Earth Magic;Basic;1;Slow
+Gelare;Conflux;Elf;Male;Elementalist;Gold;0;0;3;3;Wisdom;Basic;Water Magic;Basic;1;Dispell
+Ignissa;Conflux;Fire elemental;Female;Planeswalker;Fire elementals;3;1;1;1;Artillery;Basic;Offense;Basic;0;
+Inteus;Conflux;Human;Male;Elementalist;Bloodlust;0;0;3;3;Wisdom;Basic;Fire Magic;Basic;1;Bloodlust
+Kalt;Conflux;Ice elemental;Male;Planeswalker;Water elementals;3;1;1;1;Tacticts;Basic;Learning;Basic;0;
+Labetha;Conflux;Human;Female;Elementalist;Stone Skin;0;0;3;3;Wisdom;Basic;Earth Magic;Basic;1;Stone Skin
+Lacus;Conflux;Water elemental;Female;Planeswalker;Water elementals;3;1;1;1;Tactics;Advanced;;;0;
+Luna;Conflux;Human;Female;Elementalist;Fire Wall;0;0;3;3;Wisdom;Basic;Fire Magic;Basic;1;Fire Wall
+Monere;Conflux;Magic elemental;Male;Planeswalker;Psychic elemental;3;1;1;1;Offense;Basic;Logistics;Basic;0;
+Pasis;Conflux;Psychic elemental;Female;Planeswalker;Psychic elemental;3;1;1;1;Offense;Basic;Artillery;Basic;0;
+Thunar;Conflux;Earth elemental;Female;Planeswalker;Earth elemental;3;1;1;1;Tacticts;Basic;Estates;Basic;0;
+Fiur;Conflux;Energy elemental;Male;Planeswalker;Fire elementals;3;1;1;1;Offense;Advanced ;;;0;
+Ciele;Conflux;Elf;Female;Elementalist;Magic Arrow;0;0;3;3;Wisdom;Basic;Water Magic;Basic;1;Magic Arrow
+Erdamon;Conflux;Magma elemental;Male;Planeswalker;Earth elemental;3;1;1;1;Tacticts;Basic;Estates;Basic;0;
