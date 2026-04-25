@@ -1,7 +1,9 @@
 import random
 import pandas as pd
 from typing import List
-from src.battle_engine import Unit, Army
+
+from src.models.unit import Unit
+from src.models.army import Army
 
 
 # =========================
@@ -11,11 +13,11 @@ from src.battle_engine import Unit, Army
 def load_units(path: str) -> pd.DataFrame:
     df = pd.read_csv(
         path,
-        sep=';',          
+        sep=';',
         engine='python'
     )
 
-    df.columns = df.columns.str.strip().str.lower() 
+    df.columns = df.columns.str.strip().str.lower()
 
     return df
 
@@ -45,16 +47,21 @@ def generate_army(hero_faction: str, units_df: pd.DataFrame) -> Army:
 
     for _, row in chosen_units.iterrows():
 
-        growth = row["growth"]
+        growth = int(row["growth"])
         count = int(growth * weeks)
 
         unit = Unit(
             name=row["unit_name"],
             faction=row["castle"],
-            speed=row["speed"],
-            attack=row["attack"],
-            defense=row["defence"],
-            hp=row["health"],
+
+            speed=int(row["speed"]),
+            attack=int(row["attack"]),
+            defense=int(row["defence"]),
+
+            min_damage=int(row["minimum damage"]),
+            max_damage=int(row["maximum damage"]),
+
+            hp=int(row["health"]),
             count=count
         )
 
@@ -64,7 +71,7 @@ def generate_army(hero_faction: str, units_df: pd.DataFrame) -> Army:
 
 
 # =========================
-# MAIN (TEST RUN)
+# MAIN TEST
 # =========================
 
 if __name__ == "__main__":
@@ -82,4 +89,4 @@ if __name__ == "__main__":
     army = generate_army(hero_faction, units)
 
     for u in army.units:
-        print(u.name, u.count)  
+        print(u.name, u.count)
