@@ -2,9 +2,9 @@ import random
 
 from ..models.army import Army
 from ..models.hero import Hero
-
 from ..systems.damage import apply_damage
 from ..systems.morale import calculate_morale, morale_trigger
+from ..systems.battlefield import BattleField
 
 
 class BattleEngine:
@@ -15,17 +15,14 @@ class BattleEngine:
         self.hero_a = hero_a
         self.hero_b = hero_b
 
-    # =========================
-    # ALL UNITS
-    # =========================
+        self.field = BattleField()
+        self.field.place_army(self.a, "A")
+        self.field.place_army(self.b, "B")
+
     def all_units(self):
         return self.a.alive_units() + self.b.alive_units()
 
-    # =========================
-    # STACK DAMAGE 
-    # =========================
     def apply_stack_damage(self, target, damage: int):
-
         if damage <= 0 or target.count <= 0:
             return
 
@@ -44,18 +41,9 @@ class BattleEngine:
             if target.count <= 0:
                 target.count = 0
 
-    # =========================
-    # STEP
-    # =========================
     def step(self):
 
-        turn_order = sorted(
-            self.all_units(),
-            key=lambda u: u.speed,
-            reverse=True
-        )
-
-        for unit in turn_order:
+        for unit in sorted(self.all_units(), key=lambda u: u.speed, reverse=True):
 
             if unit.count <= 0:
                 continue
@@ -71,31 +59,41 @@ class BattleEngine:
             att_hero = self.hero_a if unit in self.a.units else self.hero_b
             def_hero = self.hero_b if unit in self.a.units else self.hero_a
 
-            damage = apply_damage(unit, target, att_hero, def_hero)
+            distance = self.field.distance(unit, target)
+
+            damage = apply_damage(
+                attacker=unit,
+                defender=target,
+                att_hero=att_hero,
+                def_hero=def_hero,
+                distance=distance,
+                is_ranged=False
+            )
+
             self.apply_stack_damage(target, damage)
 
             morale = calculate_morale(self.a if unit in self.a.units else self.b)
 
-            if morale_trigger(morale):
+            if morale_trigger(morale) and target.count > 0:
+                extra_damage = apply_damage(
+                    attacker=unit,
+                    defender=target,
+                    att_hero=att_hero,
+                    def_hero=def_hero,
+                    distance=distance,
+                    is_ranged=False
+                )
 
-                extra_damage = apply_damage(unit, target, att_hero, def_hero)
                 self.apply_stack_damage(target, extra_damage)
 
-    # =========================
-    # BATTLE LOOP
-    # =========================
     def battle(self):
-
         rounds = 0
 
         while not self.a.is_defeated() and not self.b.is_defeated():
-
             self.step()
             rounds += 1
 
-        winner = "A" if not self.a.is_defeated() else "B"
-
         return {
-            "winner": winner,
+            "winner": "A" if not self.a.is_defeated() else "B",
             "rounds": rounds
         }

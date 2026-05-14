@@ -16,6 +16,9 @@ class Unit:
     hp: int
     count: int
 
+    x: int = 0
+    y: int = 0
+
     def total_hp(self):
         return self.hp * self.count
 
