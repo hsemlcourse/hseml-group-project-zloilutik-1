@@ -50,6 +50,9 @@ def generate_army(hero_faction: str, units_df: pd.DataFrame) -> Army:
         growth = int(row["growth"])
         count = int(growth * weeks)
 
+        abilities = str(row["special_abilities"]).lower()
+        is_ranged = "ranged" in abilities
+
         unit = Unit(
             name=row["unit_name"],
             faction=row["castle"],
@@ -62,7 +65,9 @@ def generate_army(hero_faction: str, units_df: pd.DataFrame) -> Army:
             max_damage=int(row["maximum damage"]),
 
             hp=int(row["health"]),
-            count=count
+            count=count,
+
+            is_ranged=is_ranged
         )
 
         army_units.append(unit)

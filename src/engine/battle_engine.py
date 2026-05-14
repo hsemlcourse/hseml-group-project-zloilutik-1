@@ -75,7 +75,7 @@ class BattleEngine:
                 att_hero=att_hero,
                 def_hero=def_hero,
                 distance=distance,
-                is_ranged=False
+                is_ranged=unit.is_ranged
             )
 
             self.apply_stack_damage(target, damage)
@@ -87,7 +87,7 @@ class BattleEngine:
                     att_hero=att_hero,
                     def_hero=def_hero,
                     distance=distance,
-                    is_ranged=False
+                    is_ranged=unit.is_ranged
                 )
 
                 self.apply_stack_damage(target, extra_damage)

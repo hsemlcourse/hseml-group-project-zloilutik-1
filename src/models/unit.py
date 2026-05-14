@@ -16,6 +16,8 @@ class Unit:
     hp: int
     count: int
 
+    is_ranged: bool = False
+
     x: int = 0
     y: int = 0
 
