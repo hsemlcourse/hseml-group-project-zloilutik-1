@@ -3,7 +3,7 @@ import random
 from ..models.army import Army
 from ..models.hero import Hero
 from ..systems.damage import apply_damage
-from ..systems.morale import calculate_morale, morale_trigger
+from ..systems.morale import calculate_morale, morale_event
 from ..systems.battlefield import BattleField
 
 
@@ -48,7 +48,15 @@ class BattleEngine:
             if unit.count <= 0:
                 continue
 
+            own_army = self.a if unit in self.a.units else self.b
             enemy_army = self.b if unit in self.a.units else self.a
+
+            morale = calculate_morale(own_army)
+            event = morale_event(morale)
+
+            if event == "skip":
+                continue
+
             enemies = enemy_army.alive_units()
 
             if not enemies:
@@ -72,9 +80,7 @@ class BattleEngine:
 
             self.apply_stack_damage(target, damage)
 
-            morale = calculate_morale(self.a if unit in self.a.units else self.b)
-
-            if morale_trigger(morale) and target.count > 0:
+            if event == "extra" and target.count > 0:
                 extra_damage = apply_damage(
                     attacker=unit,
                     defender=target,
@@ -88,12 +94,26 @@ class BattleEngine:
 
     def battle(self):
         rounds = 0
+        max_rounds = 100
 
-        while not self.a.is_defeated() and not self.b.is_defeated():
+        while (
+            not self.a.is_defeated()
+            and not self.b.is_defeated()
+            and rounds < max_rounds
+        ):
             self.step()
             rounds += 1
 
+        if self.a.is_defeated() and self.b.is_defeated():
+            winner = "draw"
+        elif self.a.is_defeated():
+            winner = "B"
+        elif self.b.is_defeated():
+            winner = "A"
+        else:
+            winner = "timeout"
+
         return {
-            "winner": "A" if not self.a.is_defeated() else "B",
+            "winner": winner,
             "rounds": rounds
         }

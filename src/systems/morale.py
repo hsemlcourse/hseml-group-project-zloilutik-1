@@ -1,9 +1,9 @@
 from ..models.army import Army
 import random
 
-def calculate_morale(army: Army):
 
-    factions = set(u.faction for u in army.units)
+def calculate_morale(army: Army) -> int:
+    factions = {u.faction for u in army.units}
 
     if all(u.faction == "Necropolis" for u in army.units):
         return 0
@@ -14,9 +14,17 @@ def calculate_morale(army: Army):
     return 1
 
 
-def morale_trigger(morale: int):
+def morale_event(morale: int) -> str:
+    """
+    Returns:
+    - "extra" for good morale extra action
+    - "skip" for bad morale skipped action
+    - "none" if nothing happens
+    """
     if morale > 0:
-        return random.random() < 0.2
+        return "extra" if random.random() < 0.2 else "none"
+
     if morale < 0:
-        return random.random() < 0.1
-    return False
+        return "skip" if random.random() < 0.1 else "none"
+
+    return "none"
