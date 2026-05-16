@@ -1,12 +1,11 @@
 import random
 import re
-
-import pandas as pd
 from typing import List
 
-from src.models.unit import Unit
-from src.models.army import Army
+import pandas as pd
 
+from src.models.army import Army
+from src.models.unit import Unit
 
 # =========================
 # LOAD DATA

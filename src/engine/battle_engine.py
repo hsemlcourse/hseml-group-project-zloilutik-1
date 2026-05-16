@@ -2,9 +2,9 @@ import random
 
 from ..models.army import Army
 from ..models.hero import Hero
+from ..systems.battlefield import BattleField
 from ..systems.damage import apply_damage
 from ..systems.morale import calculate_morale, morale_event
-from ..systems.battlefield import BattleField
 
 
 class BattleEngine:

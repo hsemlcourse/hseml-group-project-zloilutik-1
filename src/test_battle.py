@@ -1,8 +1,8 @@
 import random
 
-from src.army_generator import load_units, generate_army
-from src.hero_generator import load_heroes, generate_hero
+from src.army_generator import generate_army, load_units
 from src.engine.battle_engine import BattleEngine
+from src.hero_generator import generate_hero, load_heroes
 
 
 def main():

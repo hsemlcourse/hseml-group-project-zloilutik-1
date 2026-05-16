@@ -1,13 +1,10 @@
 from pathlib import Path
 
 import matplotlib.pyplot as plt
-import pandas as pd
-
 from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler
 
 from src.preprocessing import preprocess_dataset
-
 
 DATASET_PATH = Path("data/processed/battles_dataset.csv")
 OUTPUT_DIR = Path("report/images")

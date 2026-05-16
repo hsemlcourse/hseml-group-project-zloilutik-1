@@ -3,7 +3,6 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 import pandas as pd
 
-
 DATASET_PATH = Path("data/processed/battles_dataset.csv")
 OUTPUT_DIR = Path("report/images")
 

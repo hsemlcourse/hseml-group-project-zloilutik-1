@@ -1,5 +1,6 @@
-from ..models.army import Army
 import random
+
+from ..models.army import Army
 
 
 def calculate_morale(army: Army) -> int:

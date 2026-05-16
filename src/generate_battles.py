@@ -3,10 +3,9 @@ from pathlib import Path
 
 import pandas as pd
 
-from src.army_generator import load_units, generate_army
-from src.hero_generator import load_heroes, generate_hero
+from src.army_generator import generate_army, load_units
 from src.engine.battle_engine import BattleEngine
-
+from src.hero_generator import generate_hero, load_heroes
 
 RANDOM_SEED = 42
 
@@ -106,7 +105,7 @@ if __name__ == "__main__":
     output_path = Path("data/processed/battles_dataset.csv")
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
-    df = generate_battles(n_battles=100)
+    df = generate_battles(n_battles=10000)
 
     df.to_csv(output_path, index=False)
 

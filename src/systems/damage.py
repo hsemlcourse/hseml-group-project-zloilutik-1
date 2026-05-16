@@ -1,7 +1,7 @@
 import random
 
-from ..models.unit import Unit
 from ..models.hero import Hero
+from ..models.unit import Unit
 from ..systems.luck import apply_luck
 
 
