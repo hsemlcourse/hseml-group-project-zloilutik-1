@@ -22,20 +22,20 @@ from src.preprocessing import preprocess_dataset
 RANDOM_SEED = 42
 
 
-def evaluate_model(model, X_train, X_val, y_train, y_val):
+def evaluate_model(model, X_train, X_eval, y_train, y_eval):
     model.fit(X_train, y_train)
 
-    y_pred = model.predict(X_val)
+    y_pred = model.predict(X_eval)
 
     if hasattr(model, "predict_proba"):
-        y_proba = model.predict_proba(X_val)[:, 1]
-        roc_auc = roc_auc_score(y_val, y_proba)
+        y_proba = model.predict_proba(X_eval)[:, 1]
+        roc_auc = roc_auc_score(y_eval, y_proba)
     else:
         roc_auc = None
 
     return {
-        "accuracy": accuracy_score(y_val, y_pred),
-        "f1": f1_score(y_val, y_pred),
+        "accuracy": accuracy_score(y_eval, y_pred),
+        "f1": f1_score(y_eval, y_pred),
         "roc_auc": roc_auc,
     }
 
@@ -52,6 +52,15 @@ def tune_model(model, param_grid, X_train, y_train):
     grid.fit(X_train, y_train)
 
     return grid.best_estimator_, grid.best_params_, grid.best_score_
+
+
+def get_best_model_name(results_df: pd.DataFrame) -> str:
+    best_row = results_df.sort_values(
+        by="f1",
+        ascending=False,
+    ).iloc[0]
+
+    return best_row["model"]
 
 
 def run_experiments():
@@ -123,6 +132,7 @@ def run_experiments():
     }
 
     results = []
+    trained_models = {}
 
     for model_name, model in models.items():
         metrics = evaluate_model(
@@ -132,6 +142,8 @@ def run_experiments():
             y_train,
             y_val,
         )
+
+        trained_models[model_name] = model
 
         results.append({
             "model": model_name,
@@ -156,6 +168,8 @@ def run_experiments():
             y_val,
         )
 
+        trained_models[model_name] = best_model
+
         results.append({
             "model": model_name,
             "best_params": best_params,
@@ -172,10 +186,35 @@ def run_experiments():
     print("\n=== VALIDATION RESULTS ===")
     print(results_df)
 
+    best_model_name = get_best_model_name(results_df)
+    best_model = trained_models[best_model_name]
+
+    print("\nBest validation model:", best_model_name)
+
+    test_metrics = evaluate_model(
+        best_model,
+        X_train,
+        X_test,
+        y_train,
+        y_test,
+    )
+
+    test_results = {
+        "model": best_model_name,
+        **test_metrics,
+    }
+
+    print("\n=== TEST RESULTS ===")
+    print(test_results)
+
     output_path = Path("data/processed/model_results.csv")
     results_df.to_csv(output_path, index=False)
 
-    print("\nResults saved to:", output_path)
+    test_output_path = Path("data/processed/test_results.csv")
+    pd.DataFrame([test_results]).to_csv(test_output_path, index=False)
+
+    print("\nValidation results saved to:", output_path)
+    print("Test results saved to:", test_output_path)
 
 
 if __name__ == "__main__":
