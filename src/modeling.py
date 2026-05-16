@@ -11,10 +11,10 @@ from sklearn.ensemble import (
     ExtraTreesClassifier,
     AdaBoostClassifier,
 )
-
 from sklearn.metrics import accuracy_score, f1_score, roc_auc_score
 from sklearn.preprocessing import StandardScaler
 from sklearn.pipeline import Pipeline
+from sklearn.model_selection import GridSearchCV
 
 from src.preprocessing import preprocess_dataset
 
@@ -36,8 +36,22 @@ def evaluate_model(model, X_train, X_val, y_train, y_val):
     return {
         "accuracy": accuracy_score(y_val, y_pred),
         "f1": f1_score(y_val, y_pred),
-        "roc_auc": roc_auc
+        "roc_auc": roc_auc,
     }
+
+
+def tune_model(model, param_grid, X_train, y_train):
+    grid = GridSearchCV(
+        estimator=model,
+        param_grid=param_grid,
+        scoring="f1",
+        cv=3,
+        n_jobs=-1,
+    )
+
+    grid.fit(X_train, y_train)
+
+    return grid.best_estimator_, grid.best_params_, grid.best_score_
 
 
 def run_experiments():
@@ -48,42 +62,63 @@ def run_experiments():
     )
 
     models = {
-        "DummyClassifier": DummyClassifier(
-            strategy="most_frequent"
-        ),
-
+        "DummyClassifier": DummyClassifier(strategy="most_frequent"),
         "LogisticRegression": Pipeline([
             ("scaler", StandardScaler()),
             ("model", LogisticRegression(
                 max_iter=1000,
                 random_state=RANDOM_SEED
-            ))
+            )),
         ]),
-
         "KNN": Pipeline([
             ("scaler", StandardScaler()),
-            ("model", KNeighborsClassifier(
-                n_neighbors=5
-            ))
+            ("model", KNeighborsClassifier(n_neighbors=5)),
         ]),
-
         "RandomForest": RandomForestClassifier(
             n_estimators=200,
-            random_state=RANDOM_SEED
+            random_state=RANDOM_SEED,
         ),
-
         "GradientBoosting": GradientBoostingClassifier(
-            random_state=RANDOM_SEED
+            random_state=RANDOM_SEED,
         ),
-
         "ExtraTrees": ExtraTreesClassifier(
             n_estimators=200,
-            random_state=RANDOM_SEED
+            random_state=RANDOM_SEED,
         ),
-
         "AdaBoost": AdaBoostClassifier(
             n_estimators=100,
-            random_state=RANDOM_SEED
+            random_state=RANDOM_SEED,
+        ),
+    }
+
+    tuning_experiments = {
+        "RandomForest_tuned": (
+            RandomForestClassifier(random_state=RANDOM_SEED),
+            {
+                "n_estimators": [100, 200],
+                "max_depth": [None, 5, 10],
+                "min_samples_split": [2, 5],
+            },
+        ),
+        "ExtraTrees_tuned": (
+            ExtraTreesClassifier(random_state=RANDOM_SEED),
+            {
+                "n_estimators": [100, 200],
+                "max_depth": [None, 5, 10],
+                "min_samples_split": [2, 5],
+            },
+        ),
+        "LogisticRegression_tuned": (
+            Pipeline([
+                ("scaler", StandardScaler()),
+                ("model", LogisticRegression(
+                    max_iter=1000,
+                    random_state=RANDOM_SEED
+                )),
+            ]),
+            {
+                "model__C": [0.1, 1.0, 10.0],
+            },
         ),
     }
 
@@ -95,18 +130,43 @@ def run_experiments():
             X_train,
             X_val,
             y_train,
-            y_val
+            y_val,
         )
 
         results.append({
             "model": model_name,
-            **metrics
+            "best_params": None,
+            "best_cv_f1": None,
+            **metrics,
+        })
+
+    for model_name, (model, param_grid) in tuning_experiments.items():
+        best_model, best_params, best_cv_score = tune_model(
+            model,
+            param_grid,
+            X_train,
+            y_train,
+        )
+
+        metrics = evaluate_model(
+            best_model,
+            X_train,
+            X_val,
+            y_train,
+            y_val,
+        )
+
+        results.append({
+            "model": model_name,
+            "best_params": best_params,
+            "best_cv_f1": best_cv_score,
+            **metrics,
         })
 
     results_df = pd.DataFrame(results)
     results_df = results_df.sort_values(
         by="f1",
-        ascending=False
+        ascending=False,
     )
 
     print("\n=== VALIDATION RESULTS ===")
