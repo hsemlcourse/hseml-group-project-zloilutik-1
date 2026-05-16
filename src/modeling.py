@@ -5,7 +5,12 @@ import pandas as pd
 from sklearn.dummy import DummyClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.neighbors import KNeighborsClassifier
-from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
+from sklearn.ensemble import (
+    RandomForestClassifier,
+    GradientBoostingClassifier,
+    ExtraTreesClassifier,
+    AdaBoostClassifier,
+)
 
 from sklearn.metrics import accuracy_score, f1_score, roc_auc_score
 from sklearn.preprocessing import StandardScaler
@@ -68,6 +73,16 @@ def run_experiments():
         ),
 
         "GradientBoosting": GradientBoostingClassifier(
+            random_state=RANDOM_SEED
+        ),
+
+        "ExtraTrees": ExtraTreesClassifier(
+            n_estimators=200,
+            random_state=RANDOM_SEED
+        ),
+
+        "AdaBoost": AdaBoostClassifier(
+            n_estimators=100,
             random_state=RANDOM_SEED
         ),
     }
