@@ -16,6 +16,7 @@ class Hero:
     skill_2_level: int
 
     def get_skill(self, skill_name: str) -> int:
+
         skill_name = skill_name.strip().lower()
 
         if self.skill_1_name.strip().lower() == skill_name:
