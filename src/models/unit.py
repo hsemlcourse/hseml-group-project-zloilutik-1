@@ -17,6 +17,11 @@ class Unit:
     count: int
 
     is_ranged: bool = False
+    shots: int = 0
+
+    creature_type: str = "living"
+    magic_resistance: float = 0.0
+    spell_immunity: str = "none"
 
     x: int = 0
     y: int = 0

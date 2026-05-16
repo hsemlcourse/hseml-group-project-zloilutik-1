@@ -1,4 +1,6 @@
 import random
+import re
+
 import pandas as pd
 from typing import List
 
@@ -23,6 +25,23 @@ def load_units(path: str) -> pd.DataFrame:
 
 
 # =========================
+# PARSERS
+# =========================
+
+def parse_shots(abilities: str) -> int:
+
+    match = re.search(
+        r"ranged\((\d+)shots\)",
+        abilities.lower()
+    )
+
+    if match:
+        return int(match.group(1))
+
+    return 0
+
+
+# =========================
 # GENERATE ARMY
 # =========================
 
@@ -37,9 +56,15 @@ def generate_army(hero_faction: str, units_df: pd.DataFrame) -> Army:
     if faction_units.empty:
         raise ValueError(f"No units found for faction: {hero_faction}")
 
-    num_stacks = random.randint(3, min(7, len(faction_units)))
+    num_stacks = random.randint(
+        3,
+        min(7, len(faction_units))
+    )
 
-    chosen_units = faction_units.sample(n=num_stacks, replace=False)
+    chosen_units = faction_units.sample(
+        n=num_stacks,
+        replace=False
+    )
 
     weeks = random.randint(1, 6)
 
@@ -51,7 +76,9 @@ def generate_army(hero_faction: str, units_df: pd.DataFrame) -> Army:
         count = int(growth * weeks)
 
         abilities = str(row["special_abilities"]).lower()
+
         is_ranged = "ranged" in abilities
+        shots = parse_shots(abilities)
 
         unit = Unit(
             name=row["unit_name"],
@@ -67,7 +94,12 @@ def generate_army(hero_faction: str, units_df: pd.DataFrame) -> Army:
             hp=int(row["health"]),
             count=count,
 
-            is_ranged=is_ranged
+            is_ranged=is_ranged,
+            shots=shots,
+
+            creature_type=str(row["creature_type"]),
+            magic_resistance=float(row["magic_resistance"]),
+            spell_immunity=str(row["spell_immunity"])
         )
 
         army_units.append(unit)
@@ -94,4 +126,12 @@ if __name__ == "__main__":
     army = generate_army(hero_faction, units)
 
     for u in army.units:
-        print(u.name, u.count)
+        print(
+            u.name,
+            u.count,
+            "ranged:", u.is_ranged,
+            "shots:", u.shots,
+            "type:", u.creature_type,
+            "resist:", u.magic_resistance,
+            "immunity:", u.spell_immunity
+        )
