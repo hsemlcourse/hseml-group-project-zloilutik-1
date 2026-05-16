@@ -55,11 +55,11 @@ def apply_damage(
     range_reduction = 0.5 if is_ranged and distance > 6 else 0.0
 
     modifier = (
-        (1 + attack_bonus + skill_bonus)
-        * apply_luck()
-        * (1 - defense_reduction)
-        * (1 - armorer_reduction)
-        * (1 - range_reduction)
+    (1 + attack_bonus + skill_bonus)
+    * apply_luck(att_hero)
+    * (1 - defense_reduction)
+    * (1 - armorer_reduction)
+    * (1 - range_reduction)
     )
 
     modifier = max(0.1, min(modifier, 4.0))
